@@ -37,9 +37,10 @@ view: unitarchive {
     sql: ${TABLE}.INITIALMW ;;
   }
 
-  dimension: latitude {
-    type: number
-    sql: ${TABLE}.latitude ;;
+  dimension: location {
+    type: location
+    sql_latitude: ${TABLE}.latitude ;;
+    sql_longitude: ${TABLE}.longitude ;;
   }
 
   dimension: longitude {
@@ -143,5 +144,9 @@ view: unitarchive {
   measure: count {
     type: count
     drill_fields: [station_name]
+  }
+  measure: Mwh {
+    sql: ${mwh} ;;
+    type: sum
   }
 }
